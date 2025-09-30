@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body class="bg-dark text-white">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     	<div class="container-fluid">
         	<a href="#" class="navbar-brand">História Romana</a>
         	<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -27,13 +27,20 @@
     	</div>
 	</nav>
     
-	<div class="container-fluid p-5 bg-danger text-white text-center">
+	<div class="container-fluid p-5 bg-danger bg-gradient text-white text-center">
     	<h1>O Império Romano</h1>
         <p>Entenda tudo sobre a civilização romana!</p>
     </div>
     
+    <style>
+      .card-img-top {
+        height: 250px;
+        object-fit: cover;
+      }
+    </style>
+    
     <div class="card-group">
-    <div class="card">
+    <div class="card bg-dark text-white">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Statue-Augustus.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">História</h5>
@@ -41,7 +48,7 @@
             <p class="card-text">A partir do início do século V d.C., o Império Romano começou a fragmentar-se...</p>
         </div>
     </div>
-    <div class="card">
+    <div class="card bg-dark text-white">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Hadrian%27s_Wall_and_Highshield_Crags_-_geograph.org.uk_-_1410581.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Geografia</h5>
@@ -49,7 +56,7 @@
             <p class="card-text">O império atingiu a sua maior extensão territorial durante o reinado de Trajano...</p>
         </div>
     </div>
-    <div class="card">
+    <div class="card bg-dark text-white">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Inscription_Theatre_Leptis_Magna_Libya.JPG" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Língua</h5>
@@ -58,6 +65,17 @@
         </div>
     </div>
 </div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-*-*">
+          <p>Feito com Bootstrap.<p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

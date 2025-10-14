@@ -1,30 +1,29 @@
-const express = require("express");
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
-function signinMiddleware(req, res, next) {
-  console.log("Rota: /users/signin");
-  next();
-}
-
-function signupMiddleware(req, res, next) {
-  console.log("Rota: /users/signup");
-  next();
-}
-
-router.get("/", (req, res) => {
-  res.redirect("/users/signup");
-});
-router.get("/:userid", (req, res) => {
-  const userId = req.params.userid;
-  res.send(`Bem-vindo, usuário ${userId}!`);
-});
-
-router.get("/signin", signinMiddleware, (req, res) => {
-  res.send("Página: Sign In");
-});
-
-router.get("/signup", signupMiddleware, (req, res) => {
-  res.send("Página: Sign Up");
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  var characters =[
+    {
+      name: 'Harry',
+      role: 'Student'
+    },
+    {
+      name: 'Dumbledore',
+      role: 'Headmaster'
+    },
+    {
+      name: 'Snape',
+      role: 'Professor'
+    },
+    {
+      name: 'Hermione',
+      role: 'Student'
+    }
+  ];
+  var subheading = "I though we should involve some magic";
+  
+  res.render('users', {characters: characters, subheading: subheading});
 });
 
 module.exports = router;

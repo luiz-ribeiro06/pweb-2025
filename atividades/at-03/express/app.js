@@ -1,37 +1,35 @@
-const express = require("express");
+const express = require('express');
+const path = require('path');
+
+const indexRouter = require('./routes/index');
+const magicRouter = require('./routes/magic');
+const usersRouter = require('./routes/users');
+
 const app = express();
-const port = 3000;
 
-app.use((req, res, next) => {
-  console.log(`Acesso em: ${req.path} - ${new Date().toLocaleString()}`);
-  next();
-});
+// Configuração do mecanismo de visualização (EJS)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-function aboutMiddleware(req, res, next) {
-  console.log("Rota: /about");
-  next();
-}
+// Middlewares básicos
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-function dataMiddleware(req, res, next) {
-  console.log("Rota: /data");
-  next();
-}
+// Rotas principais
+app.use('/', indexRouter);
+app.use('/magic', magicRouter);
+app.use('/users', usersRouter);
 
-app.get("/about", aboutMiddleware, (req, res) => {
-  res.send("Página: About");
-});
-
-app.post("/data", dataMiddleware, (req, res) => {
-  res.send("Página: Data");
-});
-
-const usersRouter = require("./routes/users");
-app.use("/users", usersRouter);
-
+// Tratamento de 404 (página não encontrada)
 app.use((req, res) => {
-  res.status(404).send('<h1>404 - Página não encontrada</h1><a href="/">Voltar ao início</a>');
+  res.status(404).render('error', { message: 'Página não encontrada!' });
 });
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+// Inicia o servidor
+const PORT = process.env.PORT || 5432;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+module.exports = app;
